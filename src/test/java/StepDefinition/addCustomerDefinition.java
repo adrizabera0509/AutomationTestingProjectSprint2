@@ -207,10 +207,23 @@ public class addCustomerDefinition {
 	    }
 	}
 
-	@When("^User enters email \"([^\"]*)\", telephone \"([^\"]*)\" and fax \"([^\"]*)\"$")
-	public void user_enters_email_telephone_and_fax(String email, String phone, String fax) throws Throwable {
+	@When("^User enters email \"([^\"]*)\", telephone \"([^\"]*)\" and fax \"([^\"]*)\" \"([^\"]*)\"$")
+	public void user_enters_email_telephone_and_fax(String email, String phone, String fax, String flag) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    try {
+	    	int f = Integer.parseInt(flag);
+	    	if(f == 1)
+	    	{
+	    		int n = 5;
+				String alphaNumericChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnop" + "1234567890";
+				String temp = new String();
+				for(int i = 0; i < n; i++)
+				{
+					int index = (int)(alphaNumericChars.length() * Math.random());
+					temp+= alphaNumericChars.charAt(index);
+				}
+				email = temp + "@gmail.com";
+	    	}
 	    	driver.findElement(By.xpath("//input[@name = 'email']")).sendKeys(email);
 	    	Thread.sleep(1000);
 	    	driver.findElement(By.xpath("//input[@name = 'telephone']")).sendKeys(phone);
@@ -329,11 +342,6 @@ public class addCustomerDefinition {
 		    	case "Warning":
 		    	{
 		    		validationClass.validateFieldsAddCustomer();
-		    		if(driver.findElement(By.xpath("//div[contains(text(),'Success: You have modified customers!')]")).isDisplayed())
-		    		{
-		    			System.out.println("Test case failed");
-		    			Assert.fail();
-		    		}
 		    	}
 	    	}
 	    }

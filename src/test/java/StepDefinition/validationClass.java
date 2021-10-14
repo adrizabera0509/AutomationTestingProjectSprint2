@@ -57,7 +57,9 @@ public class validationClass {
 		}
 		catch(Exception e)
 		{
-			
+			System.out.println("Test case failed");
+			System.out.println(e);
+			Assert.fail();
 		}
 	}
 	public static void validFieldsOrderFilter(String id, String status, String customer, String amount, String added, String modified, String validation, String result)
