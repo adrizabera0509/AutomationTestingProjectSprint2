@@ -1,114 +1,149 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("orders.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("addCustomer.feature");
 formatter.feature({
   "line": 1,
-  "name": "Orders feature",
+  "name": "Add customer feature",
   "description": "",
-  "id": "orders-feature",
+  "id": "add-customer-feature",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "line": 12,
-  "name": "Verify Filter Functionality",
+  "line": 14,
+  "name": "Verify Add customer page functionality",
   "description": "",
-  "id": "orders-feature;verify-filter-functionality",
+  "id": "add-customer-feature;verify-add-customer-page-functionality",
   "type": "scenario_outline",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 11,
-      "name": "@ordersfilter"
+      "line": 13,
+      "name": "@addcustomer"
     }
   ]
 });
 formatter.step({
-  "line": 13,
-  "name": "user enters orderid \"\u003corderid\u003e\"",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 14,
-  "name": "user enters order status \"\u003cstatus\u003e\"",
-  "keyword": "When "
-});
-formatter.step({
   "line": 15,
-  "name": "user enters customer name \"\u003ccustomer\u003e\"",
+  "name": "User selects an option for customer \"\u003ccustomer\u003e\" group dropdown",
   "keyword": "When "
 });
 formatter.step({
   "line": 16,
-  "name": "user enters total amount \"\u003camount\u003e\"",
+  "name": "User enters firstname \"\u003cfirstname\u003e\"  and lastname \"\u003clastname\u003e\"",
   "keyword": "When "
 });
 formatter.step({
   "line": 17,
-  "name": "user enters date added \"\u003cadded\u003e\"",
+  "name": "User enters email \"\u003cemail\u003e\", telephone \"\u003cTelephone\u003e\" and fax \"\u003cfax\u003e\" \"\u003cflag\u003e\"",
   "keyword": "When "
 });
 formatter.step({
   "line": 18,
-  "name": "user enters date modified \"\u003cmodified\u003e\"",
+  "name": "User enters password \"\u003cpassword\u003e\" and confirms \"\u003cconfirm\u003e\"",
   "keyword": "When "
 });
 formatter.step({
   "line": 19,
-  "name": "user clicks filter button",
+  "name": "User selects an option for newsletter \"\u003cnewsletter\u003e\", status \"\u003cstatus\u003e\", approved \"\u003capproved\u003e\" and safe \"\u003csafe\u003e\"",
   "keyword": "When "
 });
 formatter.step({
   "line": 20,
-  "name": "user sees filtered result \"\u003corderid\u003e\" , \"\u003cstatus\u003e\", \"\u003ccustomer\u003e\", \"\u003camount\u003e\", \"\u003cadded\u003e\", \"\u003cmodified\u003e\",\"\u003cvalidation\u003e\", \"\u003cresult\u003e\"",
+  "name": "User clicks on save button",
   "keyword": "Then "
 });
+formatter.step({
+  "line": 21,
+  "name": "User sees validation message \"\u003cvalidation\u003e\"",
+  "keyword": "And "
+});
 formatter.examples({
-  "line": 22,
+  "line": 23,
   "name": "",
   "description": "",
-  "id": "orders-feature;verify-filter-functionality;",
+  "id": "add-customer-feature;verify-add-customer-page-functionality;",
   "rows": [
     {
       "cells": [
-        "orderid",
-        "status",
         "customer",
-        "amount",
-        "added",
-        "modified",
+        "firstname",
+        "lastname",
+        "email",
+        "Telephone",
+        "fax",
+        "password",
+        "confirm",
+        "newsletter",
+        "status",
+        "approved",
+        "safe",
         "validation",
-        "result"
+        "flag"
       ],
-      "line": 23,
-      "id": "orders-feature;verify-filter-functionality;;1"
+      "line": 24,
+      "id": "add-customer-feature;verify-add-customer-page-functionality;;1"
     },
     {
       "comments": [
         {
-          "line": 24,
-          "value": "#|      50 |         |                |        |            |            | success    | yes    |"
+          "line": 25,
+          "value": "#| Platinum Member | Abel                              | Park                              | abel123@gmail.com                                                         |    9876543210 |       67809102 | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Success    |    1 |"
         },
         {
-          "line": 25,
-          "value": "#|         | Pending |                |        |            |            | success    | yes    |"
+          "line": 26,
+          "value": "#|                 | Abel                              | Park                              | abel23@gmail.com                                                          |    9876543210 |                | abc@123               | abc@123               |            |          |          |      | Success    |    1 |"
+        },
+        {
+          "line": 27,
+          "value": "#| Platinum Member |                                   |                                   |                                                                           |               |                |                       | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+        },
+        {
+          "line": 28,
+          "value": "#| Platinum Member | asdfghjklmnbvcxzqwertyuiopasdfghl | asdfghjklmnbvcxzqwertyuiopasdfghl | asdfghjklmnbvcxzqwertyuiopasdfghjklmnyuiopasdfghjklkmnbvcxzqwenrp@fff.com |    9876543210 |       67809102 | asdfghjklmnbWE@123232 | asdfghjklmnbWE@123231 | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+        },
+        {
+          "line": 29,
+          "value": "#| Platinum Member |                                   |                                   | abelparkgmail.com                                                         |    9098766521 |                |                | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+        },
+        {
+          "line": 30,
+          "value": "#| Platinum Member |                                   |                                   | abel@park@gmail.com                                                       |    9098766521 |                | abc@456               | abc@457               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+        },
+        {
+          "line": 31,
+          "value": "#| Platinum Member | Abel@\u0026%                           | Park@\u0026%                           | abel123@gmail.com                                                         | 987654abc$    | 678a\u0026$         | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    1 |"
+        },
+        {
+          "line": 32,
+          "value": "#| Platinum Member | Abel                              | Park                              | abel345@gmail.com                                                         | 9876543210000 | 67809102000000 | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    1 |"
+        },
+        {
+          "line": 33,
+          "value": "#| Platinum Member |                                   |                                   |                                                                           |               |                | a@1                   | a@2                   | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
         }
       ],
       "cells": [
+        "Platinum Member",
         "",
         "",
-        "manzoor mehadi",
         "",
         "",
         "",
-        "success",
-        "yes"
+        "",
+        "abc@456",
+        "Enabled",
+        "Disabled",
+        "No",
+        "Yes",
+        "Warning",
+        "0"
       ],
-      "line": 26,
-      "id": "orders-feature;verify-filter-functionality;;2"
+      "line": 34,
+      "id": "add-customer-feature;verify-add-customer-page-functionality;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 11352186100,
+  "duration": 10782676800,
   "status": "passed"
 });
 formatter.background({
@@ -140,276 +175,312 @@ formatter.step({
 });
 formatter.step({
   "line": 8,
-  "name": "User clicks the orders under sales menu",
+  "name": "User clicks the Customers option under Customer menu",
   "keyword": "When "
 });
 formatter.step({
   "line": 9,
-  "name": "User is on the orders page",
+  "name": "User is on the Customers page",
+  "keyword": "Then "
+});
+formatter.step({
+  "line": 10,
+  "name": "User clicks add new button",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 11,
+  "name": "User is on the Add Customer page",
   "keyword": "Then "
 });
 formatter.match({
   "location": "addCustomerDefinition.user_is_on_the_login_page()"
 });
 formatter.result({
-  "duration": 141976800,
+  "duration": 152868800,
   "status": "passed"
 });
 formatter.match({
   "location": "addCustomerDefinition.user_enters_username_and_password()"
 });
 formatter.result({
-  "duration": 252633600,
+  "duration": 253129200,
   "status": "passed"
 });
 formatter.match({
   "location": "addCustomerDefinition.user_clicks_the_login_button()"
 });
 formatter.result({
-  "duration": 1948741700,
+  "duration": 1798082700,
   "status": "passed"
 });
 formatter.match({
   "location": "addCustomerDefinition.user_is_on_the_dashboard()"
 });
 formatter.result({
-  "duration": 5699800,
+  "duration": 7257800,
   "status": "passed"
 });
 formatter.match({
-  "location": "ordersStepDefinition.user_clicks_the_orders_under_sales_menu()"
+  "location": "addCustomerDefinition.user_clicks_the_Customers_option_under_Customer_menu()"
 });
 formatter.result({
-  "duration": 925482700,
+  "duration": 1663920400,
   "status": "passed"
 });
 formatter.match({
-  "location": "ordersStepDefinition.user_is_on_the_orders_page()"
+  "location": "addCustomerDefinition.user_is_on_the_Customers_page()"
 });
 formatter.result({
-  "duration": 9292200,
+  "duration": 4647100,
+  "status": "passed"
+});
+formatter.match({
+  "location": "addCustomerDefinition.user_clicks_add_new_button()"
+});
+formatter.result({
+  "duration": 1097598900,
+  "status": "passed"
+});
+formatter.match({
+  "location": "addCustomerDefinition.user_is_on_the_Add_Customer_page()"
+});
+formatter.result({
+  "duration": 1060617900,
   "status": "passed"
 });
 formatter.scenario({
   "comments": [
     {
-      "line": 24,
-      "value": "#|      50 |         |                |        |            |            | success    | yes    |"
+      "line": 25,
+      "value": "#| Platinum Member | Abel                              | Park                              | abel123@gmail.com                                                         |    9876543210 |       67809102 | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Success    |    1 |"
     },
     {
-      "line": 25,
-      "value": "#|         | Pending |                |        |            |            | success    | yes    |"
+      "line": 26,
+      "value": "#|                 | Abel                              | Park                              | abel23@gmail.com                                                          |    9876543210 |                | abc@123               | abc@123               |            |          |          |      | Success    |    1 |"
+    },
+    {
+      "line": 27,
+      "value": "#| Platinum Member |                                   |                                   |                                                                           |               |                |                       | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+    },
+    {
+      "line": 28,
+      "value": "#| Platinum Member | asdfghjklmnbvcxzqwertyuiopasdfghl | asdfghjklmnbvcxzqwertyuiopasdfghl | asdfghjklmnbvcxzqwertyuiopasdfghjklmnyuiopasdfghjklkmnbvcxzqwenrp@fff.com |    9876543210 |       67809102 | asdfghjklmnbWE@123232 | asdfghjklmnbWE@123231 | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+    },
+    {
+      "line": 29,
+      "value": "#| Platinum Member |                                   |                                   | abelparkgmail.com                                                         |    9098766521 |                |                | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+    },
+    {
+      "line": 30,
+      "value": "#| Platinum Member |                                   |                                   | abel@park@gmail.com                                                       |    9098766521 |                | abc@456               | abc@457               | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
+    },
+    {
+      "line": 31,
+      "value": "#| Platinum Member | Abel@\u0026%                           | Park@\u0026%                           | abel123@gmail.com                                                         | 987654abc$    | 678a\u0026$         | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    1 |"
+    },
+    {
+      "line": 32,
+      "value": "#| Platinum Member | Abel                              | Park                              | abel345@gmail.com                                                         | 9876543210000 | 67809102000000 | abc@123               | abc@123               | Enabled    | Disabled | No       | Yes  | Warning    |    1 |"
+    },
+    {
+      "line": 33,
+      "value": "#| Platinum Member |                                   |                                   |                                                                           |               |                | a@1                   | a@2                   | Enabled    | Disabled | No       | Yes  | Warning    |    0 |"
     }
   ],
-  "line": 26,
-  "name": "Verify Filter Functionality",
+  "line": 34,
+  "name": "Verify Add customer page functionality",
   "description": "",
-  "id": "orders-feature;verify-filter-functionality;;2",
+  "id": "add-customer-feature;verify-add-customer-page-functionality;;2",
   "type": "scenario",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 11,
-      "name": "@ordersfilter"
+      "line": 13,
+      "name": "@addcustomer"
     }
   ]
 });
 formatter.step({
-  "line": 13,
-  "name": "user enters orderid \"\"",
+  "line": 15,
+  "name": "User selects an option for customer \"Platinum Member\" group dropdown",
   "matchedColumns": [
     0
   ],
   "keyword": "When "
 });
 formatter.step({
-  "line": 14,
-  "name": "user enters order status \"\"",
+  "line": 16,
+  "name": "User enters firstname \"\"  and lastname \"\"",
   "matchedColumns": [
-    1
-  ],
-  "keyword": "When "
-});
-formatter.step({
-  "line": 15,
-  "name": "user enters customer name \"manzoor mehadi\"",
-  "matchedColumns": [
+    1,
     2
   ],
   "keyword": "When "
 });
 formatter.step({
-  "line": 16,
-  "name": "user enters total amount \"\"",
-  "matchedColumns": [
-    3
-  ],
-  "keyword": "When "
-});
-formatter.step({
   "line": 17,
-  "name": "user enters date added \"\"",
+  "name": "User enters email \"\", telephone \"\" and fax \"\" \"0\"",
   "matchedColumns": [
-    4
+    3,
+    4,
+    5,
+    13
   ],
   "keyword": "When "
 });
 formatter.step({
   "line": 18,
-  "name": "user enters date modified \"\"",
+  "name": "User enters password \"\" and confirms \"abc@456\"",
   "matchedColumns": [
-    5
+    6,
+    7
   ],
   "keyword": "When "
 });
 formatter.step({
   "line": 19,
-  "name": "user clicks filter button",
+  "name": "User selects an option for newsletter \"Enabled\", status \"Disabled\", approved \"No\" and safe \"Yes\"",
+  "matchedColumns": [
+    8,
+    9,
+    10,
+    11
+  ],
   "keyword": "When "
 });
 formatter.step({
   "line": 20,
-  "name": "user sees filtered result \"\" , \"\", \"manzoor mehadi\", \"\", \"\", \"\",\"success\", \"yes\"",
-  "matchedColumns": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
-  ],
+  "name": "User clicks on save button",
   "keyword": "Then "
 });
+formatter.step({
+  "line": 21,
+  "name": "User sees validation message \"Warning\"",
+  "matchedColumns": [
+    12
+  ],
+  "keyword": "And "
+});
 formatter.match({
   "arguments": [
     {
-      "val": "",
-      "offset": 21
+      "val": "Platinum Member",
+      "offset": 37
     }
   ],
-  "location": "ordersStepDefinition.user_enters_orderid(String)"
+  "location": "addCustomerDefinition.user_selects_an_option_for_customer_group_dropdown(String)"
 });
 formatter.result({
-  "duration": 4151600,
+  "duration": 115878000,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
       "val": "",
-      "offset": 26
-    }
-  ],
-  "location": "ordersStepDefinition.user_enters_order_status(String)"
-});
-formatter.result({
-  "duration": 140700,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
+      "offset": 23
+    },
     {
-      "val": "manzoor mehadi",
-      "offset": 27
+      "val": "",
+      "offset": 40
     }
   ],
-  "location": "ordersStepDefinition.user_enters_customer_name(String)"
+  "location": "addCustomerDefinition.user_enters_firstname_and_lastname(String,String)"
 });
 formatter.result({
-  "duration": 2302596800,
+  "duration": 2269953100,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
       "val": "",
-      "offset": 26
+      "offset": 19
+    },
+    {
+      "val": "",
+      "offset": 33
+    },
+    {
+      "val": "",
+      "offset": 44
+    },
+    {
+      "val": "0",
+      "offset": 47
     }
   ],
-  "location": "ordersStepDefinition.user_enters_total_amount(String)"
+  "location": "addCustomerDefinition.user_enters_email_telephone_and_fax(String,String,String,String)"
 });
 formatter.result({
-  "duration": 80700,
+  "duration": 3372148500,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
       "val": "",
-      "offset": 24
+      "offset": 22
+    },
+    {
+      "val": "abc@456",
+      "offset": 38
     }
   ],
-  "location": "ordersStepDefinition.user_enters_date_added(String)"
+  "location": "addCustomerDefinition.user_enters_password_and_confirms(String,String)"
 });
 formatter.result({
-  "duration": 1120602000,
+  "duration": 2285630800,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "",
-      "offset": 27
+      "val": "Enabled",
+      "offset": 39
+    },
+    {
+      "val": "Disabled",
+      "offset": 57
+    },
+    {
+      "val": "No",
+      "offset": 78
+    },
+    {
+      "val": "Yes",
+      "offset": 92
     }
   ],
-  "location": "ordersStepDefinition.user_enters_date_modified(String)"
+  "location": "addCustomerDefinition.user_selects_an_option_for_newsletter_status_approved_and_safe(String,String,String,String)"
 });
 formatter.result({
-  "duration": 1105404600,
+  "duration": 4729005900,
   "status": "passed"
 });
 formatter.match({
-  "location": "ordersStepDefinition.user_clicks_filter_button()"
+  "location": "addCustomerDefinition.user_clicks_on_save_button()"
 });
 formatter.result({
-  "duration": 772660500,
+  "duration": 1072038200,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "",
-      "offset": 27
-    },
-    {
-      "val": "",
-      "offset": 32
-    },
-    {
-      "val": "manzoor mehadi",
-      "offset": 36
-    },
-    {
-      "val": "",
-      "offset": 54
-    },
-    {
-      "val": "",
-      "offset": 58
-    },
-    {
-      "val": "",
-      "offset": 62
-    },
-    {
-      "val": "success",
-      "offset": 65
-    },
-    {
-      "val": "yes",
-      "offset": 76
+      "val": "Warning",
+      "offset": 30
     }
   ],
-  "location": "ordersStepDefinition.user_sees_filtered_result(String,String,String,String,String,String,String,String)"
+  "location": "addCustomerDefinition.user_sees_validation_message(String)"
 });
 formatter.result({
-  "duration": 67298200,
+  "duration": 345468500,
   "status": "passed"
 });
 formatter.after({
-  "duration": 3894712100,
+  "duration": 3878847900,
   "status": "passed"
 });
 });

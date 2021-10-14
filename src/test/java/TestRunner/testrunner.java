@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/Feature", 
 glue = {"StepDefinition","Hooks"},
-tags = {"@ordersfilter"},
+tags = {"@addcustomer"},
 monochrome = true, 
 plugin = {"pretty", "html: target/cucumber-report"})
 public class testrunner {
