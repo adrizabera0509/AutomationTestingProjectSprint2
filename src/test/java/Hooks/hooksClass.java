@@ -24,7 +24,8 @@ public class hooksClass {
 	public void ending() throws InterruptedException
 	{
 		Thread.sleep(3000);
-		driver.quit();
+		driver.close();
 		System.out.println("Browser successfully closed");
+		Thread.sleep(1000);
 	}
 }

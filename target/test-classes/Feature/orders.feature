@@ -8,6 +8,26 @@ Feature: Orders feature
     When User clicks the orders under sales menu
     Then User is on the orders page
 
+  @orderstable
+  Scenario Outline: Verify sorted data in the table
+    When user clicks one of the header of the table "<orderid>", "<customer>", "<status>", "<total>", "<added>", "<modified>"
+    Then user sees sorted data in the table "<orderid>", "<customer>", "<status>", "<total>", "<added>", "<modified>"
+
+    Examples: 
+      | orderid | customer | status | total | added | modified |
+      | asc     |          |        |       |       |          |
+      #| desc    |          |        |       |       |          |
+      #|         | asc      |        |       |       |          |
+      #|         | desc     |        |       |       |          |
+      #|         |          | asc    |       |       |          |
+      #|         |          | desc   |       |       |          |
+      #|         |          |        | asc   |       |          |
+      #|         |          |        | desc  |       |          |
+      #|         |          |        |       | asc   |          |
+      #|         |          |        |       | desc  |          |
+      #|         |          |        |       |       | asc      |
+      #|         |          |        |       |       | desc     |
+
   @ordersfilter
   Scenario Outline: Verify Filter Functionality
     When user enters orderid "<orderid>"
@@ -20,42 +40,22 @@ Feature: Orders feature
     Then user sees filtered result "<orderid>" , "<status>", "<customer>", "<amount>", "<added>", "<modified>","<validation>", "<result>"
 
     Examples: 
-      | orderid | status  | customer       | amount | added      | modified   | validation | result |
-      |      50 |         |                |        |            |            | success    | yes    |
-      |         | Pending |                |        |            |            | success    | yes    |
-      |         |         | manzoor mehadi |        |            |            | success    | yes    |
-      |         |         |                |    100 |            |            | success    | yes    |
-      |         |         |                |        | 2019-09-17 | 2019-09-17 | success    | yes    |
-      |         |         |                |        | 2019/09/17 | 2019/09/17 | success    | yes    |
-      |         |         |                |        |   20190917 |   20190917 | success    | yes    |
-      |         |         |                |        | 19-09-17   | 19-09-17   | success    | yes    |
-      |         |         |                |        | 19/09/17   | 19/09/17   | success    | yes    |
-      |         |         |                |        |     190917 |     190917 | success    | yes    |
-      |         |         |                |        | 17/09/2019 | 17/09/2019 | success    | yes    |
-      |    9999 |         |                |        |            |            | success    | no     |
-      | abc     |         |                |        |            |            | success    | no     |
-      |         |         | Abil112 Parl@@ |        |            |            | success    | no     |
-      |         |         |                | $100   |            |            | warning    |        |
-
-  @orderstable
-  Scenario Outline: Verify sorted data in the table
-    When user clicks one of the header of the table "<orderid>", "<customer>", "<status>", "<total>", "<added>", "<modified>"
-    Then user sees sorted data in the table "<orderid>", "<customer>", "<status>", "<total>", "<added>", "<modified>"
-
-    Examples: 
-      | orderid | customer | status | total | added | modified |
-      | asc     |          |        |       |       |          |
-      | desc    |          |        |       |       |          |
-      |         | asc      |        |       |       |          |
-      |         | desc     |        |       |       |          |
-      |         |          | asc    |       |       |          |
-      |         |          | desc   |       |       |          |
-      |         |          |        | asc   |       |          |
-      |         |          |        | desc  |       |          |
-      |         |          |        |       | asc   |          |
-      |         |          |        |       | desc  |          |
-      |         |          |        |       |       | asc      |
-      |         |          |        |       |       | desc     |
+      | orderid | status | customer       | amount | added      | modified | validation | result |
+      #|      50 |         |                |        |            |            | success    | yes    |
+      #|         | Pending |                |        |            |            | success    | yes    |
+      #|         |         | manzoor mehadi |        |            |            | success    | yes    |
+      #|         |         |                |    100 |            |            | success    | yes    |
+      #|         |         |                |        | 2019-06-24 |            | success    | yes    |
+      #|         |         |                |        | 2019/09/17 | 2019/09/17 | success    | yes    |
+      #|         |         |                |        |   20190917 |   20190917 | success    | yes    |
+      #|         |         |                |        | 19-09-17   | 19-09-17   | success    | yes    |
+      #|         |         |                |        | 19/09/17   | 19/09/17   | success    | yes    |
+      #|         |         |                |        |     190917 |     190917 | success    | yes    |
+      |         |        |                |        | 24/06/2019 |          | success    | yes    |
+      #|    9999 |        |                |        |            |          | success    | no     |
+      #| abc     |        |                |        |            |          | success    | no     |
+      #|         |        | Abil112 Parl@@ |        |            |          | success    | no     |
+      #|         |        |                | $100   |            |          | warning    |        |
 
   @oderscheckbox
   Scenario Outline: Verify the checkbox in the table
@@ -87,7 +87,7 @@ Feature: Orders feature
     When user enters customer "<customer>" and customer group "<group>"
     When user enters firstname "<firstname>", lastname "<lastname>", email "<email>" , telephone "<phone>" and fax number "<fax>"
     When user clicks the continue button
-    #Then user is on the next products tab "<validation>"
+    Then user is on the next products tab "<validation>"
     When user clicks the cancel button
     Then User is on the orders page
 

@@ -102,6 +102,7 @@ public class validationClass {
 		    			if(added.length() != 0)
 		    			{
 		    				actual = driver.findElement(By.xpath("//form[@id = 'form-order']/div/table/tbody/tr[1]/td[6]")).getText();
+		    				System.out.println(actual);
 		    				String[] temp = new String[3];
 		    				String day = new String();
 		    				String month = new String();
